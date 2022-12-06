@@ -8,7 +8,8 @@ class Program
             /* Задача 54. Задайте двумерный массив. 
             Напишите программу, которая упорядочит по убыванию элементы 
             каждой строки двумерного массива. */
-            Console.WriteLine("     - -Задача 54- -");
+            Console.WriteLine();
+            Console.WriteLine("              - -Задача 54- -");
             Console.WriteLine("Двумерный массив заполненный случайными числами:");
             int row = 5;
             int columns = 5;
@@ -26,6 +27,7 @@ class Program
         {
             /* Задача 56. Задайте прямоугольный двумерный массив. 
             Напишите программу, которая будет находить строку с наименьшей суммой элементов. */
+            Console.WriteLine();
             Console.WriteLine("              - -Задача 56- -");
             Console.WriteLine("Двумерный массив заполненный случайными числами:");
             Console.WriteLine();
@@ -46,6 +48,9 @@ class Program
             12 13 14 05
             11 16 15 06
             10 09 08 07 */
+            Console.WriteLine();
+            Console.WriteLine("              - -Задача 58- -");
+            Console.WriteLine("Заполненый спирально массив 4 на 4 числами от 1 до 16:");
             int row = 4;
             int columns = 4;
             int[,] numbers = new int[row, columns];
@@ -66,7 +71,7 @@ class Program
                 numbers[i, j - 1] = index++;
             }
             //3
-            for (j = 2; i - 4 <= j ; j--)
+            for (j = 2; i - 4 <= j; j--)
             {
                 numbers[i - 1, j] = index++;
             }
@@ -88,6 +93,53 @@ class Program
 
             PrintArray2(numbers);
 
+        }
+
+        void Task61()
+        {
+            /*  Задача 61: Задайте две матрицы. Напишите
+         программу, которая будет находить произведение
+         двух матриц. */
+            Console.WriteLine();
+            Console.WriteLine("        - -Задача 61- -");
+            Console.WriteLine("Заданы две случайные матрицы A и B.");
+            Console.WriteLine("Найти произведение матрицы A * B = С.");
+            int row = 3;
+            int columns = 3;
+            int[,] numbersA = new int[row, columns];
+
+            int[,] numbersB = new int[row, columns];
+
+            int[,] numbersC = new int[row, columns];
+            FillArray(numbersA, 0, 10);
+            FillArray(numbersB, 0, 10);
+            Console.WriteLine("Матрица А:");
+            Console.WriteLine();
+            PrintArray2(numbersA);
+            Console.WriteLine();
+            Console.WriteLine("Матрица B:");
+            Console.WriteLine();
+            PrintArray2(numbersB);
+
+            /*//c00 = a00 · b00 + a01 · b10 + a02 · b20 
+             numbersC[0, 0] = (numbersA[0, 0] * numbersB[0, 0]) + (numbersA[0, 1] * numbersB[1, 0]) + (numbersA[0, 2] * numbersB[2, 0]);
+              //c01 = a00 · b01 + a01 · b11 + a02 · b21 
+             numbersC[0, 1] = (numbersA[0, 0] * numbersB[0, 1]) + (numbersA[0, 1] * numbersB[1, 1]) + (numbersA[0, 2] * numbersB[2, 1]);
+              //c02 = a00 · b02 + a01 · b12 + a02 · b22 
+             numbersC[0, 2] = (numbersA[0, 0] * numbersB[0, 2]) + (numbersA[0, 1] * numbersB[1, 2]) + (numbersA[0, 2] * numbersB[2, 2]);
+            */
+            Console.WriteLine();
+            Console.WriteLine("Матрица C = A * B:");
+
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    numbersC[i, j] = (numbersA[i, 0] * numbersB[0, j]) + (numbersA[i, 1] * numbersB[1, j]) + (numbersA[i, 2] * numbersB[2, j]);
+                }
+            }
+            Console.WriteLine();
+            PrintArray2(numbersC);
         }
 
         void MinNumColumnTwoArray(int[,] numbers)
@@ -212,10 +264,9 @@ class Program
             }
         }
 
-
-
-        //Task54(); //Задача 54
-        //Task56(); //Задача 56
+        Task54(); //Задача 54
+        Task56(); //Задача 56
         Task58(); //Задача 58
+        Task61(); //Задача 61
     }
 }
