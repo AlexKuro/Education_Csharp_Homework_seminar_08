@@ -58,41 +58,31 @@ class Program
             int i = 0;
             int j = 0;
 
-            //Console.WriteLine($"({i}, {j})");
-            //1
             for (j = 0; j < 4; j++)
             {
                 numbers[i, j] = index++;
             }
-            //2
             for (i = 1; i < j; i++)
             {
-
                 numbers[i, j - 1] = index++;
             }
-            //3
-            for (j = 2; i - 4 <= j; j--)
+            for (j = 2; i - i <= j; j--)
             {
                 numbers[i - 1, j] = index++;
             }
-            //4
             for (i = 2; i > j + 1; i--)
             {
                 numbers[i, j + 1] = index++;
             }
-            //5
             for (j = 1; j < 3; j++)
             {
                 numbers[i + 1, j] = index++;
             }
-            //6
             for (j = 2; j > 0; j--)
             {
                 numbers[i + 2, j] = index++;
             }
-
             PrintArray2(numbers);
-
         }
 
         void Task61()
@@ -121,25 +111,34 @@ class Program
             Console.WriteLine();
             PrintArray2(numbersB);
 
-            /*//c00 = a00 · b00 + a01 · b10 + a02 · b20 
-             numbersC[0, 0] = (numbersA[0, 0] * numbersB[0, 0]) + (numbersA[0, 1] * numbersB[1, 0]) + (numbersA[0, 2] * numbersB[2, 0]);
-              //c01 = a00 · b01 + a01 · b11 + a02 · b21 
-             numbersC[0, 1] = (numbersA[0, 0] * numbersB[0, 1]) + (numbersA[0, 1] * numbersB[1, 1]) + (numbersA[0, 2] * numbersB[2, 1]);
-              //c02 = a00 · b02 + a01 · b12 + a02 · b22 
-             numbersC[0, 2] = (numbersA[0, 0] * numbersB[0, 2]) + (numbersA[0, 1] * numbersB[1, 2]) + (numbersA[0, 2] * numbersB[2, 2]);
-            */
             Console.WriteLine();
             Console.WriteLine("Матрица C = A * B:");
-
+            MatrixMultiplication(numbersA, numbersB, numbersC, row, columns);
+            /* 
             for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < columns; j++)
                 {
                     numbersC[i, j] = (numbersA[i, 0] * numbersB[0, j]) + (numbersA[i, 1] * numbersB[1, j]) + (numbersA[i, 2] * numbersB[2, j]);
                 }
-            }
+            } */
             Console.WriteLine();
             PrintArray2(numbersC);
+        }
+
+        void MatrixMultiplication(int[,] numbersA, int[,] numbersB, int[,] numbersC, int row, int columns)
+        {
+            for (int i = 0; i < row; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    for (int t = 0; t < columns; t++)
+                    {
+                        numbersC[i, j] = numbersC[i, j] + (numbersA[i, t] * numbersB[t, j]);
+                    }
+                }
+            }
+
         }
 
         void MinNumColumnTwoArray(int[,] numbers)
@@ -266,7 +265,7 @@ class Program
 
         Task54(); //Задача 54
         Task56(); //Задача 56
-        Task58(); //Задача 58
+        Task58(); //Задача 58 
         Task61(); //Задача 61
     }
 }
